@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Input {
+class InputUtil {
 public:
     string inputString;
 
