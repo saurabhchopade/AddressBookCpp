@@ -12,37 +12,37 @@ public:
     }
 
     string getLastName() {
-        cout << endl << "Enter LastName : ";
+        cout << endl << "Enter LastName  : ";
         cin >> inputString;
         return inputString;
     }
 
     string getAddress() {
-        cout << endl << "Enter Address : ";
+        cout << endl << "Enter Address   : ";
         cin >> inputString;
         return inputString;
     }
 
     string getCity() {
-        cout << endl << "Enter City : ";
+        cout << endl << "Enter City      : ";
         cin >> inputString;
         return inputString;
     }
 
     string getState() {
-        cout << endl << "Enter State : ";
+        cout << endl << "Enter State     : ";
         cin >> inputString;
         return inputString;
     }
 
     string getZip() {
-        cout << endl << "Enter Zip : ";
+        cout << endl << "Enter Zip       : ";
         cin >> inputString;
         return inputString;
     }
     
     string getPhone() {
-        cout << endl << "Enter Phone : ";
+        cout << endl << "Enter Phone     : ";
         cin >> inputString;
         return inputString;
     }

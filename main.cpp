@@ -21,9 +21,9 @@ void addPerson(AddressBook &addressBook) {
 }
 
 void userChoice() {
+    AddressBook addressBook;
     while (true) {
         int option;
-        AddressBook addressBook;
        
         cout << endl << endl;
         cout << "==== CHOOSE OPTION ====" << endl;
@@ -32,7 +32,7 @@ void userChoice() {
         cout << "3) UpdateDetails  : " << endl;
         cout << "4) DeleteRecord   : " << endl;
         cout << endl << endl;
-        cout << "Enter Option      : ";
+        cout << "Enter Option     : ";
         cin>> option;
 
         switch (option) {
@@ -59,6 +59,7 @@ void userChoice() {
         }
     }    
 }
+
 int main() {
     userChoice();
 }
