@@ -12,6 +12,7 @@ public:
     void display();
     void updateDetails();
     void deleteRecord();
+    bool checkPresent(string,string);
 };
   
 void AddressBook :: addPerson(Person personn) {
@@ -78,3 +79,12 @@ void AddressBook :: updateDetails() {
 		}
 	}
  }
+
+bool AddressBook :: checkPresent(string fName, string lName) {
+    for (auto personInfo: personList) {
+        if(personInfo.firstName == fName && personInfo.lastname == lName) {
+            return true;
+        }
+    }
+    return false;
+}

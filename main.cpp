@@ -7,9 +7,16 @@ using namespace std;
 void addPerson(AddressBook &addressBook) {
     InputUtil input;
     string personDetails[7];
-   
-    personDetails[0] = input.getFirstName();
-    personDetails[1] = input.getLastName();
+    
+    while(true) {
+        personDetails[0] = input.getFirstName();
+        personDetails[1] = input.getLastName();
+        if(addressBook.checkPresent(personDetails[0],personDetails[1])) {
+            cout << "Record Already Present" << endl;
+            continue;
+        }
+        break;
+    }
     personDetails[2] = input.getAddress();
     personDetails[3] = input.getCity();
     personDetails[4] = input.getState();
