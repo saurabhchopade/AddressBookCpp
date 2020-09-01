@@ -5,18 +5,18 @@
 using namespace std;
 
 void addPerson(AddressBook &addressBook) {
-    string firstName, lastname, address, city, state, zip, phone; 
     InputUtil input;
-    
-    firstName = input.getFirstName();
-    lastname = input.getLastName();
-    address = input.getAddress();
-    city = input.getCity();
-    state = input.getState();
-    zip = input.getZip();
-    phone = input.getPhone();
+    string personDetails[7];
+   
+    personDetails[0] = input.getFirstName();
+    personDetails[1] = input.getLastName();
+    personDetails[2] = input.getAddress();
+    personDetails[3] = input.getCity();
+    personDetails[4] = input.getState();
+    personDetails[5] = input.getZip();
+    personDetails[6] = input.getPhone();
   
-    Person person(firstName, lastname, address, city, state, zip, phone);
+    Person person(personDetails);
     addressBook.addPerson(person);
 }
 
