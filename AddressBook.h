@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+#include <algorithm>
 #include <list> 
 
 class AddressBook {
@@ -13,6 +14,7 @@ public:
     void updateDetails();
     void deleteRecord();
     bool checkPresent(string,string);
+    void sortByName();
 };
   
 void AddressBook :: addPerson(Person personn) {
@@ -21,6 +23,7 @@ void AddressBook :: addPerson(Person personn) {
 }
 
 void AddressBook :: display() {
+    
     if (personList.empty() == true) {
         cout << "*Address Book Is Empty*";
     }
@@ -87,4 +90,28 @@ bool AddressBook :: checkPresent(string fName, string lName) {
         }
     }
     return false;
+}
+void AddressBook :: sortByName() {
+    string *numbers = new string[personList.size()];
+    int counter = 0;
+    for (auto personInfo: personList) {
+        numbers[counter] = personInfo.firstName;
+        counter++;
+    }
+
+    sort(numbers, numbers+personList.size());
+    for (int i = 0; i < counter; i++) {
+        for (auto personInfo: personList) {
+            if(numbers[i] == personInfo.firstName) {
+                cout << "firstName : " <<  personInfo.firstName << endl;
+                cout << "lastName  : " <<  personInfo.lastname << endl;
+                cout << "address   : " <<  personInfo.address << endl;
+                cout << "city      : " <<  personInfo.city << endl;
+                cout << "state     : " <<  personInfo.state << endl;
+                cout << "zip       : " <<  personInfo.zip << endl;
+                cout << "phone     : " <<  personInfo.phone << endl;
+            }
+        }
+
+    }         
 }

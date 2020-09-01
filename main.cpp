@@ -38,6 +38,7 @@ void userChoice() {
         cout << "2) DisplayDetails : " << endl;
         cout << "3) UpdateDetails  : " << endl;
         cout << "4) DeleteRecord   : " << endl;
+        cout << "5) SortByFirstName: " << endl;
         cout << endl << endl;
         cout << "Enter Option     : ";
         cin>> option;
@@ -57,6 +58,10 @@ void userChoice() {
             } 
             case 4: {
                 addressBook.deleteRecord();
+                break;
+            }    
+            case 5: {
+                addressBook.sortByName();
                 break;
             }    
             default: {
