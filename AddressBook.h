@@ -4,28 +4,34 @@ using namespace std;
 class AddressBook {
 public:
     string firstName, lastname, address, city, state, zip, phone;
-  
+    
     Person *person;
 
     void addPerson(Person);    
     void display();
     void updateDetails();
+    void deleteRecord();
 };
-
   
 void AddressBook :: addPerson(Person person) {
     this -> person = new Person(person);
 }
 
 void AddressBook :: display() {
-    cout << endl << endl;
-    cout << "firstName : " <<  person->firstName << endl;
-    cout << "lastName  : " <<  person->lastname << endl;
-    cout << "address   : " <<  person->address << endl;
-    cout << "city      : " <<  person->city << endl;
-    cout << "state     : " <<  person->state << endl;
-    cout << "zip       : " <<  person->zip << endl;
-    cout << "phone     : " <<  person->phone << endl;
+    if (person == nullptr) {
+        cout << "*Address Book Is Empty*";
+    }
+    else{
+
+        cout << endl << endl;
+        cout << "firstName : " <<  person->firstName << endl;
+        cout << "lastName  : " <<  person->lastname << endl;
+        cout << "address   : " <<  person->address << endl;
+        cout << "city      : " <<  person->city << endl;
+        cout << "state     : " <<  person->state << endl;
+        cout << "zip       : " <<  person->zip << endl;
+        cout << "phone     : " <<  person->phone << endl;
+    }
 }
 
 void AddressBook :: updateDetails() {
@@ -37,3 +43,11 @@ void AddressBook :: updateDetails() {
     person->zip = input.getZip();  
     person->phone = input.getPhone();  
 }
+
+ void AddressBook :: deleteRecord() {
+     if (person != nullptr) {
+        delete person;
+        person = nullptr;
+        cout << "Record Deleted Successfully";
+     }
+ }

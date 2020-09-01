@@ -27,11 +27,12 @@ void userChoice() {
        
         cout << endl << endl;
         cout << "==== CHOOSE OPTION ====" << endl;
-        cout << "1) AddPerson : " << endl;
+        cout << "1) AddPerson      : " << endl;
         cout << "2) DisplayDetails : " << endl;
-        cout << "3) UpdateDetails : " << endl;
+        cout << "3) UpdateDetails  : " << endl;
+        cout << "4) DeleteRecord   : " << endl;
         cout << endl << endl;
-        cout << "Enter Option : ";
+        cout << "Enter Option      : ";
         cin>> option;
 
         switch (option) {
@@ -45,6 +46,10 @@ void userChoice() {
             }
             case 3: {
                 addressBook.updateDetails();
+                break;
+            } 
+            case 4: {
+                addressBook.deleteRecord();
                 break;
             }    
             default: {
