@@ -14,7 +14,8 @@ public:
     void updateDetails();
     void deleteRecord();
     bool checkPresent(string,string);
-    void sortByName();
+    void sortByName(int);
+    void displayOutput(Person);
 };
   
 void AddressBook :: addPerson(Person personn) {
@@ -28,14 +29,14 @@ void AddressBook :: display() {
         cout << "*Address Book Is Empty*";
     }
     else {
-        for (auto index: personList) {
-            cout << "firstName : " <<  index.firstName << endl;
-            cout << "lastName  : " <<  index.lastname << endl;
-            cout << "address   : " <<  index.address << endl;
-            cout << "city      : " <<  index.city << endl;
-            cout << "state     : " <<  index.state << endl;
-            cout << "zip       : " <<  index.zip << endl;
-            cout << "phone     : " <<  index.phone << endl;
+        for (auto personDetails: personList) {
+            cout << "firstName : " <<  personDetails.firstName << endl;
+            cout << "lastName  : " <<  personDetails.lastname << endl;
+            cout << "address   : " <<  personDetails.address << endl;
+            cout << "city      : " <<  personDetails.city << endl;
+            cout << "state     : " <<  personDetails.state << endl;
+            cout << "zip       : " <<  personDetails.zip << endl;
+            cout << "phone     : " <<  personDetails.phone << endl;
             cout << endl << endl;
 	    }
     }
@@ -48,16 +49,16 @@ void AddressBook :: updateDetails() {
     cout << "Enter Name To update Details";
     cin >> name;
     
-    for (auto itr = personList.begin(); itr != personList.end(); itr++) { 
+    for (auto personItr = personList.begin(); personItr != personList.end(); personItr++) { 
        
-        if(itr->firstName == name) {
-            itr->firstName = name;
-            itr->lastname = input.getLastName();  
-            itr->address = input.getAddress();  
-            itr->city = input.getCity();  
-            itr->state = input.getState();  
-            itr->zip = input.getZip();  
-            itr->phone = input.getPhone();  
+        if(personItr->firstName == name) {
+            personItr->firstName = name;
+            personItr->lastname = input.getLastName();  
+            personItr->address = input.getAddress();  
+            personItr->city = input.getCity();  
+            personItr->state = input.getState();  
+            personItr->zip = input.getZip();  
+            personItr->phone = input.getPhone();  
          } 
     }
 }
@@ -91,27 +92,67 @@ bool AddressBook :: checkPresent(string fName, string lName) {
     }
     return false;
 }
-void AddressBook :: sortByName() {
-    string *numbers = new string[personList.size()];
+
+void AddressBook :: sortByName(int option) {
+    string *sortData = new string[personList.size()];
     int counter = 0;
     for (auto personInfo: personList) {
-        numbers[counter] = personInfo.firstName;
+        switch (option) {
+        case 1:
+            sortData[counter] = personInfo.firstName;
+            break;
+        case 2:
+            sortData[counter] = personInfo.city;
+            break;
+        case 3:
+            sortData[counter] = personInfo.state;
+            break;
+        case 4:
+            sortData[counter] = personInfo.zip;
+            break;    
+        default:
+            break;
+        }
         counter++;
     }
 
-    sort(numbers, numbers+personList.size());
-    for (int i = 0; i < counter; i++) {
-        for (auto personInfo: personList) {
-            if(numbers[i] == personInfo.firstName) {
-                cout << "firstName : " <<  personInfo.firstName << endl;
-                cout << "lastName  : " <<  personInfo.lastname << endl;
-                cout << "address   : " <<  personInfo.address << endl;
-                cout << "city      : " <<  personInfo.city << endl;
-                cout << "state     : " <<  personInfo.state << endl;
-                cout << "zip       : " <<  personInfo.zip << endl;
-                cout << "phone     : " <<  personInfo.phone << endl;
-            }
-        }
+    sort(sortData, sortData + personList.size());
 
+    for (int recordNo = 0; recordNo < counter; recordNo++) {
+        for (auto personInfo: personList) {
+            switch (option) {
+                case 1:
+                    if(sortData[recordNo] == personInfo.firstName)
+                        displayOutput(personInfo);
+                    break;
+                case 2:
+                    if(sortData[recordNo] == personInfo.city)
+                        displayOutput(personInfo);
+                    break;
+                case 3:
+                    if(sortData[recordNo] == personInfo.state)
+                        displayOutput(personInfo);
+                    break;
+                case 4:
+                    if(sortData[recordNo] == personInfo.zip)
+                        displayOutput(personInfo);
+                    break;    
+                default:
+                    break;
+             }
+        
+        }
     }         
+}
+
+void AddressBook :: displayOutput(Person personInfo) {
+
+    cout << "firstName : " <<  personInfo.firstName << endl;
+    cout << "lastName  : " <<  personInfo.lastname << endl;
+    cout << "address   : " <<  personInfo.address << endl;
+    cout << "city      : " <<  personInfo.city << endl;
+    cout << "state     : " <<  personInfo.state << endl;
+    cout << "zip       : " <<  personInfo.zip << endl;
+    cout << "phone     : " <<  personInfo.phone << endl;
+    cout << endl << endl;
 }

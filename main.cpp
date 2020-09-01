@@ -39,6 +39,9 @@ void userChoice() {
         cout << "3) UpdateDetails  : " << endl;
         cout << "4) DeleteRecord   : " << endl;
         cout << "5) SortByFirstName: " << endl;
+        cout << "6) SortByCity: " << endl;
+        cout << "7) SortByState: " << endl;
+        cout << "8) SortByZip: " << endl;
         cout << endl << endl;
         cout << "Enter Option     : ";
         cin>> option;
@@ -61,7 +64,23 @@ void userChoice() {
                 break;
             }    
             case 5: {
-                addressBook.sortByName();
+                int byFirstName = 1;
+                addressBook.sortByName(byFirstName);
+                break;
+            }    
+            case 6: {
+                int byCity = 2;
+                addressBook.sortByName(byCity);
+                break;
+            }    
+            case 7: {
+                int byState = 3;
+                addressBook.sortByName(byState);
+                break;
+            }    
+            case 8: {
+                int byZip = 4;
+                addressBook.sortByName(byZip);
                 break;
             }    
             default: {
