@@ -6,43 +6,43 @@ public:
     string inputString;
 
     string getFirstName() {
-        cout << "Enter FirstName : ";
+        cout << endl << "Enter FirstName : ";
         cin >> inputString;
         return inputString;
     }
 
     string getLastName() {
-        cout << "Enter LastName : ";
+        cout << endl << "Enter LastName : ";
         cin >> inputString;
         return inputString;
     }
 
     string getAddress() {
-        cout << "Enter Address : ";
+        cout << endl << "Enter Address : ";
         cin >> inputString;
         return inputString;
     }
 
     string getCity() {
-        cout << "Enter City : ";
+        cout << endl << "Enter City : ";
         cin >> inputString;
         return inputString;
     }
 
     string getState() {
-        cout << "Enter State : ";
+        cout << endl << "Enter State : ";
         cin >> inputString;
         return inputString;
     }
 
     string getZip() {
-        cout << "Enter Zip : ";
+        cout << endl << "Enter Zip : ";
         cin >> inputString;
         return inputString;
     }
     
     string getPhone() {
-        cout << "Enter Phone : ";
+        cout << endl << "Enter Phone : ";
         cin >> inputString;
         return inputString;
     }

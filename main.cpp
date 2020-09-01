@@ -29,6 +29,7 @@ void userChoice() {
         cout << "==== CHOOSE OPTION ====" << endl;
         cout << "1) AddPerson : " << endl;
         cout << "2) DisplayDetails : " << endl;
+        cout << "3) UpdateDetails : " << endl;
         cout << endl << endl;
         cout << "Enter Option : ";
         cin>> option;
@@ -40,6 +41,10 @@ void userChoice() {
             }    
             case 2: {
                 addressBook.display();
+                break;
+            }
+            case 3: {
+                addressBook.updateDetails();
                 break;
             }    
             default: {
