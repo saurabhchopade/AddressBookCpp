@@ -2,21 +2,25 @@
 using namespace std;
 #include <algorithm>
 #include <list> 
+#include <map> 
 
 class AddressBook {
 public:
     string firstName, lastname, address, city, state, zip, phone;
     
     list <Person> personList; 
-  
+    map<string,string> choiceWiseData;
+
     void addPerson(Person);    
     void display();
     void updateDetails();
     void deleteRecord();
     bool checkPresent(string,string);
-    void sortByName(int);
+    void sortByChoice(int);
     void displayOutput(Person);
-    void  displaySortedData(string[],int);
+    void displaySortedData(string[],int);
+    void viewByCityAndState();
+    void insertAsPerCityOrState(int, string, Person);
 };
   
 void AddressBook :: addPerson(Person personn) {
@@ -94,7 +98,7 @@ bool AddressBook :: checkPresent(string fName, string lName) {
     return false;
 }
 
-void AddressBook :: sortByName(int option) {
+void AddressBook :: sortByChoice(int option) {
     string *sortData = new string[personList.size()];
     int counter = 0;
     for (auto personInfo: personList) {
@@ -159,4 +163,39 @@ void AddressBook :: displayOutput(Person personInfo) {
     cout << "zip       : " <<  personInfo.zip << endl;
     cout << "phone     : " <<  personInfo.phone << endl;
     cout << endl << endl;
+}
+
+void AddressBook :: viewByCityAndState() {
+    string name;
+    int choice;
+  
+    cout << "1) View By State         : " << endl;
+    cout << "2) View By city          : " << endl;
+    cin >> choice;
+    cout << "Enter Name As Per Option : ";
+    cin >> name;
+  
+    for (auto personInfo: personList) {
+       insertAsPerCityOrState(choice, name, personInfo);
+    }
+
+    (choiceWiseData.empty() == true)? cout << "No Such Data Found " << endl : cout << "" ; 
+}
+
+void AddressBook :: insertAsPerCityOrState(int choice, string name, Person personInfo) {
+     switch (choice){
+            case 1:
+                if(name == personInfo.state)
+                    choiceWiseData.insert( { personInfo.firstName, personInfo.state });
+                    cout << "PersonName = " << personInfo.firstName << " city Name = " << personInfo.city << endl;     
+                break;
+            case 2:
+                if(name == personInfo.city)
+                    choiceWiseData.insert( { personInfo.firstName, personInfo.city });  
+                    cout << "PersonName = " << personInfo.firstName << " city Name = " << personInfo.city << endl;     
+                break;            
+            default:
+                cout << "Wrong Option";
+                break;
+        }
 }

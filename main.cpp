@@ -27,25 +27,28 @@ void addPerson(AddressBook &addressBook) {
     addressBook.addPerson(person);
 }
 
+void displayOptions(){
+        cout << endl << endl;
+        cout << "==== CHOOSE OPTION ====" << endl;
+        cout << "1) AddPerson        : " << endl;
+        cout << "2) DisplayDetails   : " << endl;
+        cout << "3) UpdateDetails    : " << endl;
+        cout << "4) DeleteRecord     : " << endl;
+        cout << "5) SortByFirstName  : " << endl;
+        cout << "6) SortByCity       : " << endl;
+        cout << "7) SortByState      : " << endl;
+        cout << "8) SortByZip        : " << endl;
+        cout << "9) ViewByCity&State : " << endl;
+        cout << endl << endl;
+        cout << "Enter Option         : ";
+}
+
 void userChoice() {
     AddressBook addressBook;
     while (true) {
         int option;
-       
-        cout << endl << endl;
-        cout << "==== CHOOSE OPTION ====" << endl;
-        cout << "1) AddPerson      : " << endl;
-        cout << "2) DisplayDetails : " << endl;
-        cout << "3) UpdateDetails  : " << endl;
-        cout << "4) DeleteRecord   : " << endl;
-        cout << "5) SortByFirstName: " << endl;
-        cout << "6) SortByCity: " << endl;
-        cout << "7) SortByState: " << endl;
-        cout << "8) SortByZip: " << endl;
-        cout << endl << endl;
-        cout << "Enter Option     : ";
         cin>> option;
-
+        displayOptions();
         switch (option) {
             case 1: {
                 addPerson(addressBook);
@@ -65,22 +68,27 @@ void userChoice() {
             }    
             case 5: {
                 int byFirstName = 1;
-                addressBook.sortByName(byFirstName);
+                addressBook.sortByChoice(byFirstName);
                 break;
             }    
             case 6: {
                 int byCity = 2;
-                addressBook.sortByName(byCity);
+                addressBook.sortByChoice(byCity);
                 break;
             }    
             case 7: {
                 int byState = 3;
-                addressBook.sortByName(byState);
+                addressBook.sortByChoice(byState);
                 break;
             }    
             case 8: {
                 int byZip = 4;
-                addressBook.sortByName(byZip);
+                addressBook.sortByChoice(byZip);
+                break;
+            }    
+            case 9: {
+                int byZip = 4;
+                addressBook.viewByCityAndState();
                 break;
             }    
             default: {
