@@ -16,6 +16,7 @@ public:
     bool checkPresent(string,string);
     void sortByName(int);
     void displayOutput(Person);
+    void  displaySortedData(string[],int);
 };
   
 void AddressBook :: addPerson(Person personn) {
@@ -115,10 +116,12 @@ void AddressBook :: sortByName(int option) {
         }
         counter++;
     }
-
     sort(sortData, sortData + personList.size());
+    displaySortedData(sortData,option);
+}
 
-    for (int recordNo = 0; recordNo < counter; recordNo++) {
+void AddressBook :: displaySortedData(string sortData[], int option){
+    for (int recordNo = 0; recordNo < personList.size(); recordNo++) {
         for (auto personInfo: personList) {
             switch (option) {
                 case 1:
@@ -143,6 +146,7 @@ void AddressBook :: sortByName(int option) {
         
         }
     }         
+
 }
 
 void AddressBook :: displayOutput(Person personInfo) {
